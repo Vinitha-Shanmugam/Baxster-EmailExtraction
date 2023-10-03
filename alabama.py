@@ -65,3 +65,5 @@ email_data_list = Email('vinitha.s@vrdella.com', 'udbb zntf hhwe fbxl')
 for msg_data in email_data_list:
     result = logic(msg_data)
     print(result)
+
+
