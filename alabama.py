@@ -58,10 +58,10 @@ def logic(li):
                             value = value.split('.')[0]
                             formatted_result["comment"] = value
                 lii.append(formatted_result)
-    print(lii)
+    return lii
 
 
 email_data_list = Email('vinitha.s@vrdella.com', 'udbb zntf hhwe fbxl')
-logic(email_data_list)
-# result = logic(email_data_list)
-# print(result)
+
+result = logic(email_data_list)
+print(result)
