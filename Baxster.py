@@ -31,19 +31,11 @@ def fetch_emails(username, password):
 
 def logic(li):
     lii = []
-    # Rest of your logic here...
-    # Create an instance of html2text
     html_converter = html2text.HTML2Text()
-    # Append message data to the list
     for msg in li:
         for response_part in msg:
             if type(response_part) is tuple:
                 my_msg = email.message_from_bytes(response_part[1])
-
-                # print("_________________________________________")
-                # print("subj:", my_msg['subject'])
-                # print("from:", my_msg['from'])
-                # print("body:")
 
                 for part in my_msg.walk():
                     # print(part.get_content_type())
@@ -99,7 +91,6 @@ def logic(li):
                                     value = float(value.group())
                                     formatted_result["job_bill_rate"] = value
 
-                                    # Join all lines back into the "Description" field
                                     formatted_result["job_description"] = '\n'.join(description_lines)
 
                                     if "Requisition Start Date" in plain_text:
@@ -133,18 +124,12 @@ def logic(li):
                                     lii.append(formatted_result)
     return lii
 
-    # Rest of your code...
-
 
 email_data_list = fetch_emails('vinitha.s@vrdella.com', 'udbb zntf hhwe fbxl')
-# for msg_data in email_data_list:
-#     result = logic(msg_data)
 l = logic(email_data_list)
 print(l)
 
 import mysql.connector
-
-# Connect to your MySQL database
 conn = mysql.connector.connect(
     host="127.0.0.1",
     user="root",
