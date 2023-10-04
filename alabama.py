@@ -30,7 +30,6 @@ def Email(username, password):
 
 def logic(li):
     lii=[]
-    # Initialize the result dictionary for this email
     html_converter = html2text.HTML2Text()
     for msg in li:
         for response_part in msg:
