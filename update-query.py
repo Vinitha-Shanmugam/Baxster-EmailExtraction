@@ -13,8 +13,6 @@ def fetch_emails(username, password):
 
     # Connection with GMAIL using SSL
     my_mail = imaplib.IMAP4_SSL(imap_url)
-
-    # Log in using your credentials
     my_mail.login(username, password)
 
     my_mail.select('Baxster')
@@ -27,7 +25,7 @@ def fetch_emails(username, password):
     # Append message data to the list
     for num in mail_id_list:
         typ, data = my_mail.fetch(num, '(RFC822)')  # RFC822 returns the whole message (BODY fetches just body)
-        li.append(data)  # Append message data to the list
+        li.append(data)  
 
     # Iterate through messages and extract data into the msgs list
     for msg_data in li:
@@ -129,11 +127,6 @@ def fetch_emails(username, password):
                                 site_value = plain_text.split("Site")[1].strip('\n')
                                 site_value = site_value.strip().split('\n')[0]
                                 formatted_result['location'] = site_value
-
-                            # if "Business Unit Code" in plain_text:
-                            #     bu_code_value = plain_text.split("Business Unit Code")[1].strip('\n')
-                            #     bu_code_value = bu_code_value.strip().split('\n')[0]
-                            #     formatted_result['business_unit'] = bu_code_value
 
                             if "Requisition Start Date" in plain_text:
                                 start = plain_text.split("Requisition Start Date")[1].strip('\n')
